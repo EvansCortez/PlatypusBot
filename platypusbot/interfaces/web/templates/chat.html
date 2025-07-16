@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Chat - PlatypusBot{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+    <div id="messageList" class="chat-history">
+        {% if chat %}
+            {% for msg in chat %}
+                <div class="message {{ msg.sender }}">
+                    <div class="bubble">
+                        {{ msg.content }}
+                        {% if msg.timestamp %}
+                        <span class="timestamp">{{ msg.timestamp }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="center-content">
+                <h1>Chatbot</h1>
+                <div class="features">
+                    <div class="feature-col">
+                        <h3>Examples</h3>
+                        <div class="feature-box">"Explain quantum computing in simple terms" →</div>
+                        <div class="feature-box">"Got any creative ideas for a 10 year old's birthday?" →</div>
+                        <div class="feature-box">"How do I make an HTTP request in Python?" →</div>
+                    </div>
+                    <div class="feature-col">
+                        <h3>Capabilities</h3>
+                        <div class="feature-box">Remembers what user said earlier in the conversation</div>
+                        <div class="feature-box">Allows user to provide follow-up corrections</div>
+                        <div class="feature-box">Trained to decline inappropriate requests</div>
+                    </div>
+                    <div class="feature-col">
+                        <h3>Limitations</h3>
+                        <div class="feature-box">May occasionally generate incorrect information</div>
+                        <div class="feature-box">May occasionally produce harmful instructions or biased content</div>
+                        <div class="feature-box">Limited knowledge of world and events after 2021</div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <form class="input-bar" id="chat-form" autocomplete="off">
+        <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off"/>
+        <button id="sendButton" type="submit">Send</button>
+        <button type="button" class="voice-record-btn" id="voiceBtn" title="Record your voice">🎤</button>
+    </form>
+</div>
+{% endblock %}
