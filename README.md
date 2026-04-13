@@ -1,52 +1,46 @@
 <div align="center">
 
-# 🦆 PlatypusBot
+# PlatypusBot
 
-**Modern AI Chatbot**  
-*Weather • Wikipedia • TTS • Conversation Memory*
-
-[![Tests](https://github.com/EvansCortez/PlatypusBot/actions/workflows/test.yml/badge.svg)](https://github.com/EvansCortez/PlatypusBot/actions)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/github/license/EvansCortez/PlatypusBot)](LICENSE)
+Purpose-built chatbot package with a shared core, desktop GUI, browser chatbox, terminal UI, live-data services, optional OpenAI responses, multilingual routing, and SQLite conversation memory.
 
 </div>
 
 ## 🚀 Quick Start
 
 ```
-# Clone & Install
-git clone https://github.com/EvansCortez/PlatypusBot
-cd PlatypusBot
 pip install -r requirements.txt
 
-# Copy config
 cp .env.example .env
-# Edit .env with your OpenWeather API key
+# Add your OpenWeather API key if you want live weather
 
-# Launch Modern GUI ✨
+# Launch the desktop app
 python run.py
 ```
-
-**Web Demo:** `python run.py web` → http://localhost:5000
 
 ## ✨ Features
 
 | Feature | Status |
 |---------|--------|
-| 🧠 **DeepSeek LLM** | ✅ Live |
 | 🌤️ **Live Weather** | ✅ OpenWeatherMap API |
+| 📰 **Realtime Headlines/Time** | ✅ Service routing |
 | 📖 **Wikipedia** | ✅ Instant search |
-| 🔊 **Text-to-Speech** | ✅ Desktop |
+| 🧠 **Optional LLM Layer** | ✅ OpenAI Responses API |
+| 🌍 **Multilingual Prompts** | ✅ Routed with translation support |
+| 🔊 **Text-to-Speech** | ✅ Optional desktop support |
 | 💾 **Conversation Memory** | ✅ SQLite database |
-| 🎨 **Modern UI** | ✅ ChatGPT-style 2025 design |
-| 🧪 **Full Tests** | ✅ 100% coverage |
-| 📱 **Multi-Platform** | ✅ GUI/CLI/Web |
+| 🎨 **Desktop GUI** | ✅ Tkinter app |
+| 🌐 **Web Chatbox** | ✅ Modern browser interface |
+| 💻 **CLI** | ✅ Terminal app |
+| 🧪 **Tests** | ✅ Included |
 
 ## 📱 Launch Options
 
 ```
-python run.py              # ✨ Modern Desktop GUI (default)
-python run.py web          # 🌐 Web interface (localhost:5000)
+python run.py              # Desktop GUI (default)
+python run.py gui          # Desktop GUI
+python run.py web          # Browser chatbox on localhost:5000
+python run.py cli          # Terminal interface
 python -m platypusbot.interfaces.cli.chat_cli  # 💻 Terminal
 ```
 
@@ -54,13 +48,13 @@ python -m platypusbot.interfaces.cli.chat_cli  # 💻 Terminal
 
 ```
 You: Weather in London?
-🦆: 🌤️ London: 15°C, partly cloudy, 65% humidity
+PlatypusBot: Weather in London: 15°C, partly cloudy, 65% humidity.
 
-You: Explain neural networks
-🦆: 🧠 Neural networks are machine learning models inspired by the human brain...
+You: Explain neural networks in French
+PlatypusBot: [LLM-backed or translated response when configured]
 
 You: Fun fact
-🦆: Platypuses lay eggs despite being mammals! 🦆
+PlatypusBot: Platypuses are mammals that lay eggs.
 ```
 
 ## 📁 Project Structure
@@ -84,12 +78,7 @@ PlatypusBot/
 ## 🧪 Run Tests
 
 ```
-# All tests
 python -m unittest discover platypusbot/tests/
-
-# Individual tests
-python -m unittest platypusbot.tests.test_chatbot
-python -m unittest platypusbot.tests.test_database
 ```
 
 ## 🔧 Setup API Keys
@@ -98,48 +87,12 @@ python -m unittest platypusbot.tests.test_database
 2. Add to `.env`:
 ```
 WEATHER_API_KEY=your_key_here
+NEWS_API_KEY=your_key_here
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-5-mini
+LIBRETRANSLATE_URL=https://your-libretranslate-instance
 ```
-
-## 🛠️ Development
-
-```
-# Install editable
-pip install -e .
-
-# Add new service
-platypusbot/core/services/your_service.py
-
-# Run tests before commit
-pytest platypusbot/tests/
-```
-
-## 📈 GitHub Actions
-
-Tests run automatically on every push/PR ✅
-
-## 🤝 Contributing
-
-1. Fork the repo
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push (`git push origin feature/amazing-feature`)
-5. Open Pull Request
 
 ## 📄 License
 
 [MIT License](LICENSE) - Free to use anywhere!
-
-## 🙏 Acknowledgments
-
-- [OpenWeatherMap](https://openweathermap.org) - Weather API
-- [Wikipedia API](https://www.mediawiki.org) - Knowledge base
-- [HuggingFace Transformers](https://huggingface.co) - LLM models
-
----
-
-<div align="center">
-
-**⭐ Star this repo if you found it useful!**  
-**Made with ❤️ by [EvansCortez](https://github.com/EvansCortez)**
-
-</div>
